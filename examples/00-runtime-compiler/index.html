@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runtime + Compiler</title>
+</head>
+
+<body>
+  <div id="app">Hello World</div>
+  <!-- 完整版, 包含运行时和编译器 -->
+  <!-- <script src="../../dist/vue.js"></script> -->
+
+  <!-- 运行时版本，不包含 compiler，不支持 template，体积更小 -->
+  <script src="../../dist/vue.runtime.js"></script>
+  <!-- <script>
+    const vm = new Vue({
+      el: '#app',
+      template: '<h1>{{ msg }}</h1>',
+      data: {
+        msg: 'Hello Vue'
+      }
+    })
+  </script> -->
+
+  <script>
+    /**
+     * compiler 作用是将 template 转换成 render 函数
+     * render 函数用于创建虚拟 dom
+     * **/
+    const vm = new Vue({
+      el: '#app',
+      render(h) {
+        return h('h1', this.msg)
+      },
+      data: {
+        msg: 'Hello Vue'
+      }
+    })
+  </script>
+</body>
+
+</html>
